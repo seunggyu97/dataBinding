@@ -2,10 +2,8 @@ package com.anushka.bindingdemo2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.ProgressBar
 import androidx.databinding.DataBindingUtil
+import com.anushka.bindingdemo2.R
 import com.anushka.bindingdemo2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,19 +11,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.controlButton.setOnClickListener {
-            startOrStopProgressBar()
-        }
+        binding.student = getStudent()
     }
 
-    private fun startOrStopProgressBar() {
-        if (binding.progressBar.visibility == View.GONE) {
-            binding.progressBar.visibility = View.VISIBLE
-            binding.controlButton.text = "Stop"
-        } else {
-            binding.progressBar.visibility = View.GONE
-            binding.controlButton.text = "Start"
-        }
+    private fun getStudent():Student{
+        return Student(1,"Seunggyu","seunggyu97@gmail.com")
     }
 }
-
